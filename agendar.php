@@ -5,31 +5,16 @@ ini_set('display_errors', 1);
 
 include 'conexao.php';
 
-$mensagem = "";
+$mensagem = "Ocorreu tudo certo!";
 $sucesso = false;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $corte = trim($_POST['corte'] ?? '');
-    $data = $_POST['data'] ?? '';
+$nome_user = $_POST['nome_user'];
+$senha_user = $_POST['senha_user'];
 
-    if (!empty($corte) && !empty($data)) {
-        $stmt = $conn->prepare("INSERT INTO agendamentos (corte, data) VALUES (?, ?)");
-        $stmt->bind_param("ss", $corte, $data);
+$query = "INSERT INTO usuarios (usuario, senha) VALUES ('$nome_user', '$senha_user')";
 
-        if ($stmt->execute()) {
-            $mensagem = "✨ Agendamento confirmado com sucesso! ✨";
-            $sucesso = true;
-        } else {
-            $mensagem = "Erro: " . $stmt->error;
-        }
+mysqli_query($conn, $query);
 
-        $stmt->close();
-    } else {
-        $mensagem = "Preencha todos os campos!";
-    }
-
-    $conn->close();
-}
 ?>
 
 <!DOCTYPE html>

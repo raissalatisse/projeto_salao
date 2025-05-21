@@ -60,14 +60,14 @@
 </head>
 <body>
   <form method="POST" action="agendar.php">
-    <h2>Agendar Corte</h2>
-    <label for="corte">Tipo de Corte</label>
-    <input type="text" name="corte" id="corte" required>
+    <h2>Cadastrar Usuário</h2>
+    <label for="nome_user">Nome de usuário</label>
+    <input type="text" name="nome_user" id="nome_user" required>
 
-    <label for="data">Data</label>
-    <input type="date" name="data" id="data" required>
+    <label for="senha_user">Senha</label>
+    <input type="text" name="senha_user" id="senha_user" required>
 
-    <button type="submit">Agendar</button>
+    <button type="submit">Cadastrar</button>
   </form>
 </body>
 </html>
